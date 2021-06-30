@@ -13,24 +13,17 @@ local function on_paint()
         
 		if not entity or entity:is_player() then goto continue; end
 		
-		local entityId = entity:get_var_int("CBaseEntity->m_nModelIndex");
-		
+		local entityId = entity:get_class_id();		
 		local grenadeName = "";
-		if entityId == 121 then
+		if entityId == 157 then
 			grenadeName = "smoke";
-		elseif entityId == 123 or entityId == 124 then
+		elseif entityId == 114 then
 			grenadeName = "inferno";
-		--elseif entityId == 126 then
-		--	grenadeName = "he grenade";
-		elseif entityId == 127 then
-			grenadeName = "flash";
-		elseif entityId == 128 then
-			grenadeName = "decoy";
 		else
 			goto continue; 
 		end
 		
-		entityPos = entity:get_var_vector("CBaseEntity->m_vecOrigin");
+		local entityPos = entity:get_var_vector("CBaseEntity->m_vecOrigin");
 		entityPos:to_screen();
 		
 		local textSize = render:text_size(fonts, grenadeName);
